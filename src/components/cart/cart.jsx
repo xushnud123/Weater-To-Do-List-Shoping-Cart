@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import product from "../../utils/data/cartDate";
 import Product from "../products/product/product";
 import "./car.scss";
 
@@ -18,7 +17,6 @@ const Cart = () => {
     setPrice(sum);
   }, [cart]);
 
-  console.log(cart);
   return (
     <div className="wrapper">
       {cart.length ? (

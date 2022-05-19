@@ -16,12 +16,11 @@ const Weather = () => {
             method: "get",
             url,
           }).then(function (response) {
-            console.log(response);
             setData(response.data);
             setLoad(false);
           });
         } catch (error) {
-          console.log(error);
+          console.log(error.message);
           setLoad(false);
         }
       };
@@ -30,12 +29,9 @@ const Weather = () => {
       setLocation('')
     }
   }
-  console.log(data);
 
   const kelvinToFarenheit = (k) => {
-    console.log(k);
     const t = (k - 273.15).toFixed(2);
-    console.log(t);
     return t;
   };
 
@@ -85,7 +81,7 @@ const Weather = () => {
               <p>humidity</p>
             </div>
             <div className="speed">
-              {data ? <h1>{data.wind.speed * 0.447.toFixed(2)} m/s</h1> : <h1>1 m/s</h1>}
+              {data ? <h1>{(data.wind.speed * 0.447).toFixed(2)} m/s</h1> : <h1>1 m/s</h1>}
               <p>wind speed</p>
             </div>
           </div>

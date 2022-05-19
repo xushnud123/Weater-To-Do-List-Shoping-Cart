@@ -1,11 +1,10 @@
 import React from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { cartAdd,removeCart } from "../../../store/shoppingCart";
 
 const Product = ({item}) => {
       const dispatch = useDispatch();
-      const count = useSelector((state) => state.list);
-      
+    
 
     return (
       <div className="card">
@@ -47,7 +46,7 @@ const Product = ({item}) => {
               >
                 <p>-</p>
               </div>
-              <p>{item.qty}</p>
+              <p>{item.qty} kg</p>
               <div
                 className="inc"
                 onClick={() =>

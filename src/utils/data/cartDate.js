@@ -8,13 +8,13 @@ const product = [
   {
     id: 2,
     pay: 2,
-    name: "apricots",
+    name: "cherries",
     path: "https://pngimg.com/uploads/cherry/cherry_PNG611.png",
   },
   {
     id: 3,
     pay: 3,
-    name: "cherries",
+    name: "apricots",
     path: "https://www.picng.com/upload/apricot/png_apricot_8438.png",
   },
   {
