@@ -10,7 +10,6 @@ const Product = ({item}) => {
     return (
       <div className="card">
         <ToastContainer autoClose={2000} />
-
         <div className="card-header">
           <img src={item.path} alt="img not found" />
         </div>
