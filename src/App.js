@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import configureStore from "./store/configureStore";
+import Navbar from "./components/navbar/navbar";
+import Cart from "./components/cart/cart";
+import Products from "./components/products/products";
+import ToDoList from "./components/to-do-list/to-do-list";
+import Weather from "./components/weather/weather";
+
+const store = configureStore()
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store} >
+          <Navbar />
+        <Routes>
+          <Route path="/pro" element={<Products/>}/>
+          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/weather" element={<Weather/>}/>
+          <Route path="/" element={<ToDoList/>}/>
+        </Routes>
+    </Provider>
   );
 }
 
