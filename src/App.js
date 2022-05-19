@@ -18,8 +18,8 @@ function App() {
         <Routes>
           <Route path="/pro" element={<Products/>}/>
           <Route path="/cart" element={<Cart/>}/>
-          <Route path="/weather" element={<Weather/>}/>
-          <Route path="/" element={<ToDoList/>}/>
+          <Route path="/" element={<Weather/>}/>
+          <Route path="/todo" element={<ToDoList/>}/>
         </Routes>
     </Provider>
   );

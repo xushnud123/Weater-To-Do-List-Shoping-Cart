@@ -22,9 +22,9 @@ export default function Nav() {
   return (
     <div className="navbar">
       <ul className="nav-links">
+        <Link to="/">Weather</Link>
         <Link to="/pro">Shopping Cart</Link>
-        <Link to="/">ToDoList</Link>
-        <Link to="/weather">Weather</Link>
+        <Link to="/todo">ToDoList</Link>
         <Link to="/cart">
           <p>
             <BsCart4 /> <span>{count}</span>
