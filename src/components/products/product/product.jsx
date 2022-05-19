@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Product = ({item}) => {
       const dispatch = useDispatch();
-      const notify = () => toast("🛒Successfully added to the cart!");
+      const notify = () => toast("🛒Successfully added to the cart!!");
 
     return (
       <div className="card">
