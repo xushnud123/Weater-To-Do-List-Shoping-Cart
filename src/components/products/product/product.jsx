@@ -1,13 +1,16 @@
 import React from 'react'
 import { useDispatch} from "react-redux";
 import { cartAdd,removeCart } from "../../../store/shoppingCart";
+import { ToastContainer, toast } from "react-toastify";
 
 const Product = ({item}) => {
       const dispatch = useDispatch();
-    
+      const notify = () => toast("🛒Successfully added to the cart");
 
     return (
       <div className="card">
+        <ToastContainer autoClose={2000} />
+
         <div className="card-header">
           <img src={item.path} alt="img not found" />
         </div>
@@ -21,13 +24,14 @@ const Product = ({item}) => {
             <button
               type="button"
               className="btn"
-              onClick={() =>
+              onClick={() => {
                 dispatch(
                   cartAdd({
                     id: item.id,
                   })
-                )
-              }
+                );
+                notify();
+              }}
             >
               ADD CARD
             </button>
@@ -39,7 +43,7 @@ const Product = ({item}) => {
                   dispatch(
                     removeCart({
                       id: item.id,
-                      qty:item.qty
+                      qty: item.qty,
                     })
                   )
                 }
