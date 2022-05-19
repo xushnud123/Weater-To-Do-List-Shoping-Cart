@@ -15,6 +15,15 @@ const List = ({item,todos,setTodos}) => {
             setTodos(todo);
           };
 
+        const checLocation =(id) => {
+          const index = todos.findIndex((i) => i.id === id);
+          const to = todos;
+          to[index].completed = !chec;
+          setTodos(to);
+          setChec(!chec);
+          return to;
+        } 
+
         const editHandler = (id) => {
           const item = todos.find((i) => i.id === id);
           setEdit(!edit);
@@ -35,7 +44,7 @@ const List = ({item,todos,setTodos}) => {
 
            localStorage.setItem("todos", JSON.stringify(todos));
            //  console.log(localStorage.getItem("todos"),JSON.parse(todos));
-         }, [edit]);
+         }, [edit,chec,todos]);
 
     return (
       <div key={item.id} className="list">
@@ -51,11 +60,15 @@ const List = ({item,todos,setTodos}) => {
               placeholder="Title"
             />
           ) : (
-            <h1 className={!chec ? "" : "item"}>{item.text}</h1>
+            <h1 className={item.completed ? "" : "item"}>{item.text}</h1>
           )}
         </div>
-        <button type="button" className="chec" onClick={()=> setChec(!chec)}>
-          {!chec ? <BiCheckDouble /> : <MdOutlineClose />}
+        <button
+          type="button"
+          className="chec"
+          onClick={() => checLocation(item.id)}
+        >
+          {item.completed ? <BiCheckDouble /> : <MdOutlineClose />}
         </button>
         {edit ? (
           <button className="saveBtn" onClick={() => update(item.id)}>

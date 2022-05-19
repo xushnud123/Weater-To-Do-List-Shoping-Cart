@@ -1,8 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { AiFillFileAdd } from "react-icons/ai";
-
-import "./to-do-list.scss";
 import List from "./list";
+import "./to-do-list.scss";
 
 const ToDoList = () => {
   const [name, setName] = useState("");
@@ -17,7 +16,7 @@ const ToDoList = () => {
     if(name !== ''){
         setTodos([
             ...todos,
-            { text: name, completed: false, id: Math.random() * 1000 },
+            { text: name, completed: true, id: Math.random() * 1000 },
         ]);
         setName("");
     }
@@ -27,7 +26,6 @@ const ToDoList = () => {
   };
 
    useEffect(() => {
-       console.log(todos)
      localStorage.setItem("todos", JSON.stringify(todos));
    }, [todos]);
 
@@ -36,7 +34,7 @@ const ToDoList = () => {
     <div className="inputWrapper">
       <div className="title">TO-DO-LIST</div>
       <div className="section">
-        <form className="row">
+        <form className="row" onSubmit={(e) => handleSubmit(e)}>
           <input
             type="text"
             className="in"
@@ -46,9 +44,9 @@ const ToDoList = () => {
             placeholder="Add Task"
           />
           <button
-            type="button"
+            type="submit"
             className="btn"
-            onClick={(e) => handleSubmit(e)}
+            // onClick={(e) => handleSubmit(e)}
           >
             Add Task <AiFillFileAdd />
           </button>
