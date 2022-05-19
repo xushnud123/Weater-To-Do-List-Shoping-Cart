@@ -7,7 +7,7 @@ const slice = createSlice({
     initialState: {
         products: product,
         cart: [],
-        currentItem: null,
+
     },
     reducers: {
         cartAdd: (state, action) => {
@@ -43,12 +43,6 @@ const slice = createSlice({
                 cart: state.cart.filter(item => item.id === action.payload.id ? { ...item, qty: action.payload.qty } : item)
             }
         },
-        addCurrentItem: (state, action) => {
-            return {
-                ...state,
-                currentItem: action.payload
-            }
-        }
     }
 })
 
