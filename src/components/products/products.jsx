@@ -18,7 +18,6 @@ const Products = () => {
           if(data.length > 0){
             return <Product key={data[0].id} item={data[0]} />;
           }
-
         return <Product key={item.id} item={item}/>
         })}
       </div>
