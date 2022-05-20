@@ -1,11 +1,40 @@
+@mixin button($theme: DarkGray) {
+  margin-left: 10px;
+  width: 4%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: $theme;
+  color: #fff;
+  font-size: 20px;
+  border: 0;
+  cursor: pointer;
+  transition: all linear 0.225s;
+  &:hover {
+    box-shadow: rgb(38, 57, 77) 0px 15px 30px -10px;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    font-size: 20px;
+  }
+}
+
+%displey-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .inputWrapper {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 65px);
+  background: #f1f1f1;
   display: flex;
   flex-direction: column;
   align-items: center;
   .title {
-      margin-top: 80px;
+    margin-top: 80px;
     text-align: center;
     font-size: 24px;
     line-height: 28px;
@@ -14,16 +43,20 @@
   .section {
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 60%;
     .row {
       width: 100%;
+      height: 80px;
+      padding: 0 20px;
       display: flex;
       align-items: center;
+      background-color: #fff;
+      border-radius: 15px;
       .in {
         width: 80%;
         height: 40px;
         border-radius: 10px;
-        border: 1px solid rgba($color: #000000, $alpha: 0.2);
+        border: 0;
         font-size: 20px;
         color: #000000;
         padding-left: 15px;
@@ -32,11 +65,11 @@
         }
       }
       .btn {
-          margin-left: 20px;
+        margin-left: 20px;
         width: 20%;
         height: 40px;
         border-radius: 10px;
-        background: #1da1f2;
+        background: #0c56d0;
         border: 0;
         cursor: pointer;
         color: #fff;
@@ -48,49 +81,49 @@
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
         display: flex;
-          align-items: center;
-          justify-content: center;
-          svg{
-              margin-left:8px;
-              font-size: 20px;
-          }
+        align-items: center;
+        justify-content: center;
+        svg {
+          margin-left: 8px;
+          font-size: 20px;
+        }
       }
     }
   }
   .lists {
     margin-top: 80px;
-    width: 50%;
+    width: 60%;
     .list {
       width: 100%;
       &:not(:nth-child(1)) {
         margin-top: 30px;
       }
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @extend %displey-flex;
       .list-item {
-        width: 60%;
+        width: 92%;
         height: 40px;
-        border-radius: 10px;
-        border: 1px solid rgba($color: #000000, $alpha: 0.2);
         display: flex;
         align-items: center;
+        border-bottom: 2px solid rgba($color: #000000, $alpha: 0.5) !important;
         h1 {
           font-size: 20px;
           color: #000000;
           font-weight: 500;
           padding-left: 15px;
+          width: 100%;
+          padding-bottom: 5px;
         }
-        .item{
-            text-decoration: line-through;
-            opacity: 0.5;
+        .item {
+          text-decoration: line-through;
+          opacity: 0.5;
         }
         input {
           width: 100%;
           height: 100%;
+          background: transparent;
           border: 0;
-          border-radius: 10px;
           font-size: 20px;
+          font-weight: 500;
           color: #000000;
           padding-left: 15px;
           &:focus {
@@ -98,92 +131,23 @@
           }
         }
       }
-      .chec{
-        margin-left: 10px;
-        width: 6%;
-        height: 40px;
-        border-radius: 10px;
-        border: 0;
-        background: #80ed99;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-         cursor: pointer;
-        transition: all linear 0.225s;
-        svg{
-            font-size: 22px;
-            color: white;
+      .chec {
+        svg {
+          color: #0c56d0;
+          font-size: 32px;
         }
         &:hover {
-          box-shadow: rgb(38, 57, 77) 0px 15px 30px -10px;
+          background-color: rgba(136, 179, 248, 0.4);
         }
       }
       .editBtn {
-          margin-left: 10px;
-        width: 17%;
-        height: 40px;
-        border-radius: 10px;
-        background-color: #4361ee;
-        color: #fff;
-        font-size: 20px;
-        border: 0;
-        cursor: pointer;
-        transition: all linear 0.225s;
-        &:hover {
-          box-shadow: rgb(38, 57, 77) 0px 15px 30px -10px;
-        }
-         display: flex;
-          align-items: center;
-          justify-content: center;
-          svg{
-              margin-left:8px;
-              font-size: 20px;
-          }
+        @include button(#4361ee);
       }
-    .saveBtn {
-          margin-left: 10px;
-        width: 20%;
-        height: 40px;
-        border-radius: 10px;
-        background-color: #9d4edd;
-        color: #fff;
-        font-size: 20px;
-        border: 0;
-        cursor: pointer;
-        transition: all linear 0.225s;
-        &:hover {
-          box-shadow: rgb(38, 57, 77) 0px 15px 30px -10px;
-        }
-         display: flex;
-          align-items: center;
-          justify-content: center;
-          svg{
-              margin-left:8px;
-              font-size: 20px;
-          }
+      .saveBtn {
+        @include button(#9d4edd);
       }
-
       .deleteBtn {
-          margin-left: 10px;
-        width: 17%;
-        height: 40px;
-        border-radius: 10px;
-        background-color: #f72585;
-        color: #fff;
-        font-size: 20px;
-        border: 0;
-        cursor: pointer;
-        transition: all linear 0.225s;
-        &:hover {
-          box-shadow: rgb(38, 57, 77) 0px 15px 30px -10px;
-        }
-         display: flex;
-          align-items: center;
-          justify-content: center;
-          svg{
-              margin-left:8px;
-              font-size: 20px;
-          }
+        @include button(#f72585);
       }
     }
   }

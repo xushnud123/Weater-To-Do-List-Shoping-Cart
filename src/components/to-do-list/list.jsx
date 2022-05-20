@@ -1,21 +1,23 @@
 import React, { useEffect,useState } from "react";
+import Checkbox from "@material-ui/core/Checkbox";
+import Button from "@material-ui/core/Button";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
-import { BiCheckDouble } from "react-icons/bi";
-import { MdOutlineClose } from "react-icons/md";
 import { MdOutlineSaveAlt } from "react-icons/md";
 
-const List = ({item,todos,setTodos}) => {
+const List = ({item,todos,setTodos,delet}) => {
     const [edit, setEdit] = useState(false);
       const [textEdit, setTextEdit] = useState("");
-    const [chec,setChec] = useState(false)
+    const [chec,setChec] = useState(true)
 
           const deleteHandler = (id) => {
             const todo = todos.filter((item) => item.id !== id);
             setTodos(todo);
+            delet()
           };
 
-        const checLocation =(id) => {
+        const checLocation =(e,id) => {
+          console.log(chec,item.completed)
           const index = todos.findIndex((i) => i.id === id);
           const to = todos;
           to[index].completed = !chec;
@@ -46,8 +48,17 @@ const List = ({item,todos,setTodos}) => {
            //  console.log(localStorage.getItem("todos"),JSON.parse(todos));
          }, [edit,chec,todos]);
 
+         const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
     return (
       <div key={item.id} className="list">
+        <Checkbox
+          {...label}
+          sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
+          checked={item.completed && chec}
+          onClick={(e) => checLocation(e,item.id)}
+          className="chec"
+        />
         <div className="list-item">
           {edit ? (
             <input
@@ -63,25 +74,18 @@ const List = ({item,todos,setTodos}) => {
             <h1 className={item.completed ? "" : "item"}>{item.text}</h1>
           )}
         </div>
-        <button
-          type="button"
-          className="chec"
-          onClick={() => checLocation(item.id)}
-        >
-          {item.completed ? <BiCheckDouble /> : <MdOutlineClose />}
-        </button>
         {edit ? (
-          <button className="saveBtn" onClick={() => update(item.id)}>
-            Save <MdOutlineSaveAlt />
-          </button>
+          <Button className="saveBtn" onClick={() => update(item.id)}>
+            <MdOutlineSaveAlt />
+          </Button>
         ) : (
-          <button className="editBtn" onClick={() => editHandler(item.id)}>
-            Edit <FiEdit />
-          </button>
+          <Button className="editBtn" onClick={() => editHandler(item.id)}>
+            <FiEdit />
+          </Button>
         )}
-        <button className="deleteBtn" onClick={() => deleteHandler(item.id)}>
-          Delete <RiDeleteBin5Line />
-        </button>
+        <Button className="deleteBtn" onClick={() => deleteHandler(item.id)}>
+         <RiDeleteBin5Line />
+        </Button>
       </div>
     );
 }

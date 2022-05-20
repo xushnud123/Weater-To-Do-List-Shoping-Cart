@@ -1,5 +1,7 @@
 import React, { useEffect,useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { AiFillFileAdd } from "react-icons/ai";
+import Button from "@material-ui/core/Button";
 import List from "./list";
 import "./to-do-list.scss";
 
@@ -10,6 +12,9 @@ const ToDoList = () => {
     return localData ? JSON.parse(localData) : [];
   });
 
+  const notify = () => toast.error("Iltimos maydonni to`ldiring");
+  const suc = () => toast.success("Muvaffaqiyatli qo'shildi");
+  const delet = () => toast.success("Muvaffaqiyatli o'cchirildi");
  
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,9 +24,10 @@ const ToDoList = () => {
             { text: name, completed: true, id: Math.random() * 1000 },
         ]);
         setName("");
+        suc()
     }
     else{
-       return alert('iltimos maydonni to`ldiring')
+       return notify()
     }
   };
 
@@ -29,37 +35,43 @@ const ToDoList = () => {
      localStorage.setItem("todos", JSON.stringify(todos));
    }, [todos]);
 
+   
 
   return (
-    <div className="inputWrapper">
-      <div className="title">TO-DO-LIST</div>
-      <div className="section">
-        <form className="row" onSubmit={(e) => handleSubmit(e)}>
-          <input
-            type="text"
-            className="in"
-            name="add task"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Add Task"
-          />
-          <button
-            type="submit"
-            className="btn"
-            // onClick={(e) => handleSubmit(e)}
-          >
-            Add Task <AiFillFileAdd />
-          </button>
-        </form>
+    <React.Fragment>
+      <ToastContainer autoClose={2000} />
+      <div className="inputWrapper">
+        <div className="title">TO-DO-LIST</div>
+        <div className="section">
+          <form className="row" onSubmit={(e) => handleSubmit(e)}>
+            <input
+              type="text"
+              className="in"
+              name="add task"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Add Task"
+            />
+            <Button type="submit" className="btn" variant="contained">
+              Add Task <AiFillFileAdd />
+            </Button>
+          </form>
+        </div>
+        <div className="lists">
+          {todos.map((item) => {
+            return (
+              <List
+                key={item.id}
+                item={item}
+                todos={todos}
+                setTodos={setTodos}
+                delet={delet}
+              />
+            );
+          })}
+        </div>
       </div>
-      <div className="lists">
-        {todos.map((item) => {
-          return (
-            <List key={item.id} item={item} todos={todos} setTodos={setTodos} />
-          );
-        })}
-      </div>
-    </div>
+    </React.Fragment>
   );
 };
 
