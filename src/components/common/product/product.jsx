@@ -10,15 +10,15 @@ const Product = ({item}) => {
     return (
       <div className="card">
         <ToastContainer autoClose={2000} />
-        <div className="card-header">
+        <div className="card-head">
           <img src={item.path} alt="img not found" />
         </div>
-        <div className="card-body">
+        <div className="card-bodys">
           <h1>{item.name}</h1>
           <p>{item.pay}$</p>
         </div>
 
-        <div className="card-footer">
+        <div className="card-foot">
           {item.qty === 0 || item.qty === undefined ? (
             <button
               type="button"

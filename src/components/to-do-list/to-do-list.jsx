@@ -43,7 +43,7 @@ const ToDoList = () => {
       <div className="inputWrapper">
         <div className="title">TO-DO-LIST</div>
         <div className="section">
-          <form className="row" onSubmit={(e) => handleSubmit(e)}>
+          <form className="rows" onSubmit={(e) => handleSubmit(e)}>
             <input
               type="text"
               className="in"

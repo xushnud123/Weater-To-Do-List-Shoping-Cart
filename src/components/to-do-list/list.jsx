@@ -55,7 +55,7 @@ const List = ({item,todos,setTodos,delet}) => {
         <Checkbox
           {...label}
           sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
-          checked={item.completed && chec}
+          checked={!item.completed && !chec}
           onClick={(e) => checLocation(e,item.id)}
           className="chec"
         />
