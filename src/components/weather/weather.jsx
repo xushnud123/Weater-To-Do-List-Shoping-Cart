@@ -52,7 +52,7 @@ const Weather = () => {
       <div className="section">
         <input
           type="text"
-          defaultValue="Dallas"
+          defaultValue='Toshkent'
           placeholder="Enter Location"
           value={location}
           onKeyPress={searchLocation}
@@ -70,6 +70,7 @@ const Weather = () => {
               <div className="error">
                 <h1>Error: {data.message}</h1>
                 <p>Please enter a city name correctly.</p>
+                <h2>404</h2>
               </div>
             ) : (
               <React.Fragment>

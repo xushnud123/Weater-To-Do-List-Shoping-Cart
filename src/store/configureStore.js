@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reducer from './shoppingCart'
 
-export default function() {
+ function createConfig() {
     return configureStore({
         reducer,
     })
 }
+
+export default createConfig

@@ -43,7 +43,7 @@ const Cart = () => {
         className="modal"
       >
         <div className="modal-body">
-          <div clasName="card">
+          <div className="card border-0">
             <Cards
               number={number}
               name={name}
@@ -62,7 +62,8 @@ const Cart = () => {
                   className="form-control"
                   value={number}
                   name="number"
-                  maxlength="16"
+                  
+                  maxLength="16"
                   pattern="[0-9]+"
                   autoComplete="on"
                   onChange={(e) => {
@@ -81,6 +82,7 @@ const Cart = () => {
                   className="form-control"
                   value={name}
                   name="name"
+                  
                   autoComplete="on"
                   onChange={(e) => {
                     SetName(e.target.value);
@@ -92,15 +94,11 @@ const Cart = () => {
             <br />
             <div className="row">
               <div
-                className="col=sm-8"
-                style={{
-                  ...{ "padding-right": "12em" },
-                  ...{ "padding-left": "1em" },
-                }}
+                className="col-sm-8 "
               >
                 <label htmlFor="month">Expiration Date</label>
               </div>
-              <div className="col=sm-4">
+              <div className="col-sm-4">
                 <label htmlFor="cvv">CVV</label>
               </div>
             </div>
@@ -150,7 +148,7 @@ const Cart = () => {
                 <input
                   type="tel"
                   name="cvc"
-                  maxlength="3"
+                  maxLength="3"
                   className=" form-control card"
                   value={cvc}
                   autoComplete="on"
@@ -163,11 +161,11 @@ const Cart = () => {
               </div>
             </div>
             <br />
-            <input
+            <button
               type="submit"
               className="btn btn-secondary form-control"
-              value="Submit"
-            />
+              onClick={()=>setOpen(false)}
+            >Submit</button>
           </form>
         </div>
       </Modal>
