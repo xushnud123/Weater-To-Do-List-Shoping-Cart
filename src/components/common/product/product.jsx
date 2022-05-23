@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch} from "react-redux";
 import { cartAdd,removeCart } from "../../../store/shoppingCart";
 import { ToastContainer, toast } from "react-toastify";
+import Button from "@material-ui/core/Button";
 
 const Product = ({item}) => {
       const dispatch = useDispatch();
@@ -20,9 +21,10 @@ const Product = ({item}) => {
 
         <div className="card-foot">
           {item.qty === 0 || item.qty === undefined ? (
-            <button
+            <Button
               type="button"
               className="btn"
+              variant='contained'
               onClick={() => {
                 dispatch(
                   cartAdd({
@@ -33,7 +35,7 @@ const Product = ({item}) => {
               }}
             >
               ADD CARD
-            </button>
+            </Button>
           ) : (
             <div className="btnCount">
               <div
